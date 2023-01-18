@@ -4,6 +4,11 @@
        <%= current_company.name %>
     </div>
     <div class="navbar__name">
+      <i class="bi bi-bell-fill me-3 position-relative" data-bs-toggle="modal" data-bs-target="#notificationModal">
+        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle">
+          <span class="visually-hidden">New alerts</span>
+        </span>
+      </i>
       <%= current_user.name || current_user.email %>
     </div>
     <%= link_to "Profile", user_path(current_user), class: "btn btn-outline-light me-2" %>

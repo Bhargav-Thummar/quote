@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "pages#home"
+  root "bids#index"
   get "export_csv", to: "pages#export_csv"
   resources :bids do
     resources :line_item_dates, except: [:index, :show] do 

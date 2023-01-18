@@ -80,3 +80,4 @@ gem "devise", "~> 4.8.1"
 gem "stimulus-rails" 
 gem 'country_select'
 gem 'draper'
+gem "noticed", "~> 1.6"

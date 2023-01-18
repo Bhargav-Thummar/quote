@@ -1,8 +1,11 @@
 class Bid < ApplicationRecord
+  has_noticed_notifications
+
   has_many :line_item_dates, dependent: :destroy
   has_many :line_items, through: :line_item_dates
   
   belongs_to :company
+  has_many :users, through: :company
   
   validates :name, presence: true
   
@@ -22,6 +25,26 @@ class Bid < ApplicationRecord
   # short hand for the above three line
 
   broadcasts_to ->(bid) { [bid.company, "bids"] }, inserts_by: :prepend
+
+  after_create_commit :notify_user
+  
+  def notify_user
+    BidNotification.with(bid: self).deliver_later(users)
+  end
+
+  def broadcast_notification(user)
+    
+    broadcast_prepend_later_to(
+      user,
+      company,
+      :notifications,
+      target: 'notifications-list',
+      partial: 'notifications/notification',
+      locals: {
+        notification: self.notifications_as_bid.first
+      }
+    )
+  end
 
   def total_price
     line_items.sum(&:total_price)

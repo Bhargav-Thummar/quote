@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!, unless: :devise_controller?
+  before_action :set_notification
+
+  def set_notification
+    @notifications = @current_user.notifications.newest_first if current_company
+  end
 
   private
 

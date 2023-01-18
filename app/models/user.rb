@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   belongs_to :company
 
+  has_many :notifications, as: :recipient
+
   PROFILE_FIELDS = %i[name age dob bio phone address city zip country].freeze
 
 end

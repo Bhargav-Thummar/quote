@@ -10,6 +10,9 @@ application.register("clipboard", ClipboardController)
 import FormvalidatorController from "./formvalidator_controller"
 application.register("formvalidator", FormvalidatorController)
 
+import NotificationController from "./notification_controller"
+application.register("notification", NotificationController)
+
 import RemovalsController from "./removals_controller"
 application.register("removals", RemovalsController)
 

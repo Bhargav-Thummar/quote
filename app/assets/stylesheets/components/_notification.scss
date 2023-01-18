@@ -1,0 +1,11 @@
+.notification {
+  border: 1px solid #ccc !important;
+}
+
+.notification.bg-light-blue {
+  border: 1px solid var(--color-dark-blue) !important;
+}
+
+.bg-light-blue {
+  background-color: var(--color-light-blue);
+}
