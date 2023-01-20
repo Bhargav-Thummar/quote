@@ -75,6 +75,7 @@ group :test do
   gem "webdrivers"
 end
 
+gem "sass-rails"
 gem "simple_form", "~> 5.1.0"
 gem "devise", "~> 4.8.1"
 gem "stimulus-rails" 

@@ -1,11 +1,12 @@
 <% noti = notification.to_notification%>
-<div class="notification p-2 px-3 d-flex align-items-start <%= noti.read? == "Read" ? "" : "bg-light-blue"%>" data-controller="notification" >
-  <i class="bi bi-info-circle-fill me-3"></i>
-  <div>
+<div class="notification p-2 px-3 d-flex align-items-start bg-light-blue" data-notification-alert-target="individualNotification" data-notification-id=<%= notification.id %>>
+  <div><i class="bi bi-info-circle-fill me-3"></i></div>
+  <div class="flex-grow-1">
     <p class="mb-1"><b>New Bid</b></p>
     <p class="text-gray-700 mb-1">
       <b><%= noti.recipient.name %></b> is created new bid.
     </p>
     <p class="mb-1"><%= noti.message %></p>
   </div>
+  <div><i class="bi bi-x" data-action="click->notification-alert#removeNotification"></i></div>
 </div>
