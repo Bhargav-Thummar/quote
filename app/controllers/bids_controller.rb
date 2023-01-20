@@ -47,7 +47,6 @@ class BidsController < ApplicationController
       format.html { redirect_to bids_path, notice: "Bid was successfully destroyed."}
       format.turbo_stream { flash.now[:notice] = "Bid was successfully destroyed." }
     end
-    
   end
 
   private
