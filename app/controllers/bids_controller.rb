@@ -21,7 +21,7 @@ class BidsController < ApplicationController
         format.html { redirect_to bids_path, notice: "Bid was successfully created." }
         format.turbo_stream { flash.now[:notice] = "Bid was successfully created." }
       end
-      
+
     else
       render :new, status: :unprocessable_entity
     end

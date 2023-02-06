@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_17_100536) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_02_105029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100536) do
     t.datetime "updated_at", null: false
     t.bigint "company_id", null: false
     t.index ["company_id"], name: "index_bids_on_company_id"
+  end
+
+  create_table "blorgh_articles", force: :cascade do |t|
+    t.string "title"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "author_id"
+  end
+
+  create_table "blorgh_comments", force: :cascade do |t|
+    t.integer "article_id"
+    t.text "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "companies", force: :cascade do |t|
@@ -57,7 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_17_100536) do
     t.datetime "read_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
